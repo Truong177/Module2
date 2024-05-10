@@ -28,3 +28,5 @@ public class CheckPrime20 {
         return true;
     }
 }
+
+
