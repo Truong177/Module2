@@ -5,6 +5,8 @@ import models.Student;
 import java.util.Scanner;
 
 public class StudentView {
+
+
     public int view() {
         System.out.println("--------Student View--------");
         System.out.println("1. Add student");
@@ -35,10 +37,36 @@ public class StudentView {
     public void viewMessage(boolean result) {
 
         if (result) {
-            System.out.println("Thêm mới thành công");
+            System.out.println("Tác vụ thành công");
         } else {
-            System.out.println("Thêm mới thất bại");
+            System.out.println("Tác vụ thất bại");
         }
     }
 
+    public static void displayAllStudent(Student[] students) {
+        for (Student student : students){
+            System.out.println("Code " +student.getCode() + " Name " + student.getName());
+        }
+    }
+
+    public static int inPutCode() {
+        System.out.println("Mời bạn nhập code ");
+        Scanner scanner = new Scanner(System.in);
+        return Integer.parseInt(scanner.nextLine());
+    }
+
+    public void displayMessegeNotFound() {
+        System.out.println("Không tìm thấy học sinh ");
+    }
+
+    public boolean confirmDelete(Student student) {
+        System.out.println("Bạn có muốn xóa hay không " +student.getCode() + " Bấm Y để xác nhận, N để hủy ");
+        Scanner scanner = new Scanner(System.in);
+        String isConfirm = scanner.nextLine();
+        if (isConfirm.equals("Y")){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

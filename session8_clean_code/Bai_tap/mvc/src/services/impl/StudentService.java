@@ -7,6 +7,10 @@ import services.IStudentService;
 public class StudentService implements IStudentService {
     private StudentRepository studentRepository = new StudentRepository();
 
+    public static Student findByCode(int code) {
+        return StudentRepository.findByCode(code);
+    }
+
 
     @Override
     public boolean add(Student student) {
@@ -18,6 +22,16 @@ public class StudentService implements IStudentService {
         }
         studentRepository.add(student);
         return true;
+    }
+
+    @Override
+    public Student[] getAll() {
+        return studentRepository.getAll();
+    }
+
+    @Override
+    public void removeStudent(Student student) {
+        studentRepository.removeStudent(student);
     }
 }
 
