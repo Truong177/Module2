@@ -1,6 +1,8 @@
+import java.util.ArrayList;
+
 public class MyListTest {
     public static void main(String[] args) {
-        MyList<String> list = new MyList<>();
+        ArrayList<String> list = new ArrayList<>();
         list.add(0, "A");
         list.add(1, "B");
         list.add(2, "C");
@@ -18,7 +20,8 @@ public class MyListTest {
         System.out.println("Danh sách sau khi xóa tất cả các phần tử: ");
         printList(list);
     }
-    public static void printList(MyList<?> list) {
+
+    public static void printList(ArrayList<?> list) {
         System.out.print("[");
         for (int i = 0; i < list.size(); i++) {
             System.out.print(list.get(i));

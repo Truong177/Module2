@@ -50,7 +50,7 @@ public class MyList<E> {
         return size;
     }
 
-    @Override
+
     public MyList<E> clone() {
         MyList<E> newList = new MyList<>(elements.length);
         newList.size = size;
