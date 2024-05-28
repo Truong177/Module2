@@ -12,9 +12,9 @@ public class MainController {
         Product product;
         int choice;
         boolean result;
-        while (true){
+        while (true) {
             choice = productManagerView.view();
-            switch (choice){
+            switch (choice) {
                 case 1:
                     product = productManagerView.viewAdd();
                     result = productManagerService.add(product);
@@ -22,7 +22,20 @@ public class MainController {
                 case 2:
                     break;
                 case 3:
-                    
+                    int code = ProductManagerView.inputCode();
+                    product = productManagerService.findByCode(code);
+                    if (product == null) {
+                        productManagerView.viewMessege(false);
+                    } else {
+                        boolean isConfirm = productManagerView.confirmDelete(product);
+                        if (isConfirm){
+                            productManagerService.removeProduct(product);
+                            productManagerView.viewMessege(true);
+
+                        }
+                        break;
+
+                    }
             }
         }
     }

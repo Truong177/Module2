@@ -5,6 +5,8 @@ import models.Product;
 import java.util.Scanner;
 
 public class ProductManagerView {
+
+
     public int view(){
         System.out.println("--------Product Manager--------");
         System.out.println("1: Add product");
@@ -37,6 +39,22 @@ public class ProductManagerView {
             System.out.println("Tác vụ thành công");
         }else {
             System.out.println("Tác vụ thất bại ");
+        }
+    }
+    public static int inputCode() {
+        System.out.println("Mời bạn nhập code");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
+
+    public boolean confirmDelete(Product product) {
+        System.out.println("Bạn có muốn xóa không " +product.getCode()+" Bấm Y để xác nhận , N để hủy");
+        Scanner scanner = new Scanner(System.in);
+        String isConfirm = scanner.nextLine();
+        if (isConfirm.equals("Y")){
+            return true;
+        }else {
+            return false;
         }
     }
 }

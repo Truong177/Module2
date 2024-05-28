@@ -18,4 +18,14 @@ public class ProductManagerService implements ISProductManagerService {
         ProductManagerRepository.add(product);
         return true;
     }
+
+    @Override
+    public Product findByCode(int code) {
+        return ProductManagerRepository.findByCode(code);
+    }
+
+    @Override
+    public void removeProduct(Product product) {
+        productManagerRepository.removeProduct(product);
+    }
 }

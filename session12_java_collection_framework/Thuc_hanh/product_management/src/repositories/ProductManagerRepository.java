@@ -16,4 +16,30 @@ public class ProductManagerRepository {
         products[count] = product;
         count++;
     }
+
+    public static Product findByCode(int code) {
+        for (Product product : products) {
+            if (product == null) {
+                return null;
+            }
+            if (product.getCode() == code) {
+                return product;
+            }
+        }
+        return null;
+    }
+
+    public void removeProduct(Product product) {
+        for (int i = 0; i < count; i++) {
+            if (products[i] != null && products[i].getCode() == product.getCode()) {
+                for (int j = i; j < count - 1; j++) {
+                    products[j] = products[j + 1];
+                }
+                products[count - 1] = null;
+                count--;
+                return;
+            }
+        }
+    }
+
 }
