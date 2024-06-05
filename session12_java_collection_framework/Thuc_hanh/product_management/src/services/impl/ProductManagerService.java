@@ -28,4 +28,19 @@ public class ProductManagerService implements ISProductManagerService {
     public void removeProduct(Product product) {
         productManagerRepository.removeProduct(product);
     }
+
+    @Override
+    public Product[] getAll() {
+        return ProductManagerRepository.getAll();
+    }
+
+    @Override
+    public Product[] sortProduct() {
+        return productManagerRepository.sortProduct();
+    }
+
+    @Override
+    public boolean updateProduct(Product updateProduct) {
+        return productManagerRepository.updateProduct(updateProduct);
+    }
 }

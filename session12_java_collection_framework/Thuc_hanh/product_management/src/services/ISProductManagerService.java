@@ -8,4 +8,10 @@ public interface ISProductManagerService {
     Product findByCode(int code);
 
     void removeProduct(Product product);
+
+    Product[] getAll();
+
+    Product[] sortProduct();
+
+    boolean updateProduct(Product updateProduct);
 }

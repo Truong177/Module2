@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class ProductManagerView {
 
 
+
     public int view(){
         System.out.println("--------Product Manager--------");
         System.out.println("1: Add product");
@@ -56,5 +57,31 @@ public class ProductManagerView {
         }else {
             return false;
         }
+    }
+    public static void displayAllProduct(Product[] products) {
+        for (Product product : products){
+            System.out.println("Code " +product.getCode() + " Name " +product.getName() +" Price " +product.getPrice());
+        }
+    }
+    public static void displayProduct(Product product) {
+        if (product != null){
+            System.out.println("Code: " + product.getCode());
+            System.out.println("Name: " + product.getName());
+            System.out.println("Price: " + product.getPrice());
+        }else{
+            System.out.println("No product found.");
+        }
+    }
+
+    public Product viewEdit(Product product) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Updating product " +product.getName());
+        System.out.println("Input your name ");
+        String name = scanner.nextLine();
+        System.out.println("Input your price ");
+        int price = Integer.parseInt(scanner.nextLine());
+        product.setName(name);
+        product.setPrice(price);
+        return product;
     }
 }

@@ -12,6 +12,7 @@ public class MainController {
         Product product;
         int choice;
         boolean result;
+        int code;
         while (true) {
             choice = productManagerView.view();
             switch (choice) {
@@ -20,15 +21,24 @@ public class MainController {
                     result = productManagerService.add(product);
                     productManagerView.viewMessege(result);
                 case 2:
+                    code = ProductManagerView.inputCode();
+                    product = productManagerService.findByCode(code);
+                    if (product != null) {
+                        Product updateProduct = productManagerView.viewEdit(product);
+                        result = productManagerService.updateProduct(updateProduct);
+                        productManagerView.viewMessege(result);
+                    } else {
+                        productManagerView.viewMessege(false);
+                    }
                     break;
                 case 3:
-                    int code = ProductManagerView.inputCode();
+                    code = ProductManagerView.inputCode();
                     product = productManagerService.findByCode(code);
                     if (product == null) {
                         productManagerView.viewMessege(false);
                     } else {
                         boolean isConfirm = productManagerView.confirmDelete(product);
-                        if (isConfirm){
+                        if (isConfirm) {
                             productManagerService.removeProduct(product);
                             productManagerView.viewMessege(true);
 
@@ -36,6 +46,21 @@ public class MainController {
                         break;
 
                     }
+                case 4:
+                    Product[] products = productManagerService.getAll();
+                    ProductManagerView.displayAllProduct(products);
+                    break;
+                case 5:
+                    code = ProductManagerView.inputCode();
+                    product = productManagerService.findByCode(code);
+                    ProductManagerView.displayProduct(product);
+                    break;
+                case 6:
+                    Product[] products1 = productManagerService.sortProduct();
+                    ProductManagerView.displayAllProduct(products1);
+                    break;
+                case 0:
+                    return;
             }
         }
     }
